@@ -1,0 +1,23 @@
+.navbar {
+  background-color: white;
+  margin-bottom: 1rem;
+
+  .container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+  }
+
+  .navbar-brand {
+    height: 50px;
+    display: flex;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
