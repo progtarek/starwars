@@ -1,17 +1,20 @@
+@import "../../../../../assets/scss/variables";
+@import "../../../../../assets/scss/general";
+
 .card {
-  display: flex;
-  background-color: white;
+  @extend .d-flex;
+  background-color: $color-white;
   flex-direction: row;
   border: 1px solid #eaedf2;
   border-radius: 0.2rem;
 
   &--title {
-    color: #6ec6fe;
+    color: $color-primary;
   }
 
   &--header {
-    background-color: #6ec6fe;
-    display: flex;
+    background-color: $color-primary;
+    @extend .d-flex;
     width: 120px;
     justify-content: center;
     align-items: center;
@@ -25,24 +28,6 @@
   &--body {
     padding: 0.5rem;
     flex: 1;
-  }
-
-  .info-block {
-    display: flex;
-    flex-direction: column;
-    margin: 5px 0;
-
-    &--title {
-      color: #bdc5cf;
-      font-size: 13px;
-    }
-
-    &--subtitle,
-    &--subtitle a {
-      color: #76879d;
-      font-size: 14px;
-      font-weight: 700;
-    }
   }
 
   &--footer {

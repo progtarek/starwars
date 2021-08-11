@@ -1,5 +1,8 @@
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/general";
+
 .navbar {
-  background-color: white;
+  background-color: $color-white;
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +15,7 @@
 
   .container {
     position: relative;
-    display: flex;
+    @extend .d-flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
@@ -21,7 +24,7 @@
 
   .navbar-brand {
     height: 50px;
-    display: flex;
+    @extend .d-flex;
 
     img {
       max-width: 100%;
@@ -33,12 +36,11 @@
     font-size: 1rem;
     font-weight: 400;
     line-height: 1;
-    color: #6ec6fe;
-    // color: #346382;
-    caret-color: #6ec6fe;
-    background-color: #fff;
+    color: $color-primary;
+    caret-color: $color-primary;
+    background-color: $color-white;
     background-clip: padding-box;
-    border: 1px solid #6ec6fe;
+    border: 1px solid $color-primary;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -52,8 +54,8 @@
     max-width: 300px;
 
     &:focus {
-      background-color: #fff;
-      border-color: #6ec6fe;
+      background-color: $color-white;
+      border-color: $color-primary;
       outline: 0;
     }
 
@@ -64,7 +66,7 @@
     }
 
     &::placeholder {
-      color: #6ec6fe;
+      color: $color-primary;
       font-weight: 600;
       opacity: 0.8;
     }
