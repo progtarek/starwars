@@ -1,9 +1,10 @@
+import { QueryParams } from './../../../shared/models/QueryParams';
 import { UsersList } from './../models/UsersList';
 import { environment } from './../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, tap } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +14,12 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  users$ = this.http.get<UsersList>(this.peopleUrl).pipe(
-    // tap((data) => console.log('Users: ', JSON.stringify(data))),
-    catchError(this.handleError)
-  );
+  getUsersList(params?: any): Observable<UsersList> {
+    return this.http.get<UsersList>(this.peopleUrl, { params }).pipe(
+      // tap((res) => console.log(res)),
+      catchError(this.handleError)
+    );
+  }
 
   private handleError(err: any) {
     // in a real world app, we may send the server to some remote logging infrastructure

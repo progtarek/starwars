@@ -1,5 +1,5 @@
-export interface Paging {
-  count: number;
-  next: string | null;
-  previous: string | null;
+export class Paging {
+  count: number = 0;
+  next: string | null = null;
+  previous: string | null = null;
 }

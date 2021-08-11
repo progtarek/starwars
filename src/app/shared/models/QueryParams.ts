@@ -1,4 +1,5 @@
 import { Paging } from './Paging';
-export interface QueryParams extends Paging {
+export class QueryParams {
   search?: string;
+  page: number = 1;
 }
