@@ -1,3 +1,4 @@
+import { HomeWorld } from './HomeWorld';
 export interface User {
   name: string;
   height: string;
@@ -7,7 +8,7 @@ export interface User {
   eye_color: string;
   birth_year: string;
   gender: string;
-  homeworld: string;
+  homeworld: HomeWorld;
   films?: string[] | null;
   species?: null[] | null;
   vehicles?: string[] | null;

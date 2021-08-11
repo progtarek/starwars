@@ -3,8 +3,8 @@ import { UsersList } from './../models/UsersList';
 import { environment } from './../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, tap } from 'rxjs/operators';
-import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
+import { catchError, map, mergeMap } from 'rxjs/operators';
+import { BehaviorSubject, forkJoin, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +17,21 @@ export class UserService {
 
   getUsersList(params?: any): Observable<UsersList> {
     return this.http.get<UsersList>(this.peopleUrl, { params }).pipe(
-      // tap((res) => console.log(res)),
+      mergeMap(
+        ({ results, ...rest }) =>
+          forkJoin(
+            results.map((user) =>
+              this.http
+                .get(user.homeworld as unknown as string)
+                .pipe(map((homeworld) => ({ ...user, homeworld })))
+            )
+          ),
+        ({ results, ...rest }, populatedUsers) =>
+          ({
+            results: populatedUsers,
+            ...rest,
+          } as UsersList)
+      ),
       catchError(this.handleError)
     );
   }

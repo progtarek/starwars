@@ -7,17 +7,25 @@
 
     <!-- height -->
     <div class="info-block">
-      <div class="info-block--title">Height:</div>
+      <div class="info-block--title">Height</div>
       <div class="info-block--subtitle">{{ user?.height }}</div>
     </div>
 
     <!-- url -->
     <div class="info-block">
-      <div class="info-block--title">URL:</div>
+      <div class="info-block--title">URL</div>
       <div class="info-block--subtitle">
         <a target="_blank" [href]="user?.url">{{ user?.url }}</a>
       </div>
     </div>
   </div>
-  <div class="card--footer">this is footer</div>
+  <div class="card--footer">
+    <!-- Home world -->
+    <div class="info-block">
+      <div class="info-block--title">Homeworld</div>
+      <div class="info-block--subtitle">
+        {{ user?.homeworld?.name }}
+      </div>
+    </div>
+  </div>
 </div>

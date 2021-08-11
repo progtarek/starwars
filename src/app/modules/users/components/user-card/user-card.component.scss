@@ -25,23 +25,23 @@
   &--body {
     padding: 0.5rem;
     flex: 1;
+  }
 
-    .info-block {
-      display: flex;
-      flex-direction: column;
-      margin: 5px 0;
+  .info-block {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
 
-      &--title {
-        color: #bdc5cf;
-        font-size: 13px;
-      }
+    &--title {
+      color: #bdc5cf;
+      font-size: 13px;
+    }
 
-      &--subtitle,
-      &--subtitle a {
-        color: #76879d;
-        font-size: 14px;
-        font-weight: 700;
-      }
+    &--subtitle,
+    &--subtitle a {
+      color: #76879d;
+      font-size: 14px;
+      font-weight: 700;
     }
   }
 
@@ -49,6 +49,7 @@
     flex: 1;
     position: relative;
     overflow: hidden;
+    padding: 0.5rem;
 
     &::after {
       content: "";
@@ -59,7 +60,7 @@
       background-repeat: no-repeat;
       top: 0;
       left: 0;
-      opacity: 0.15;
+      opacity: 0.13;
       background-position: right -100px center;
       background-size: 60%;
     }
