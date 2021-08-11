@@ -21,12 +21,11 @@ import { User } from '../../models/User';
 export class UsersListComponent implements OnInit {
   usersList$!: Observable<User[]>;
   hasNext: boolean = true;
-  queryParamsSubject = new BehaviorSubject<QueryParams>(new QueryParams());
 
   constructor(private usersService: UserService) {}
 
   ngOnInit(): void {
-    this.usersList$ = this.queryParamsSubject.pipe(
+    this.usersList$ = this.usersService.queryParamsSubject.pipe(
       debounce((params) => (params.search ? timer(300) : EMPTY)),
       distinctUntilChanged(),
       mergeMap((params) => this.usersService.getUsersList(params)),
@@ -34,15 +33,19 @@ export class UsersListComponent implements OnInit {
         this.hasNext = next ? true : false;
         return results;
       }),
-      scan((a, c: any) => a.concat(...c), [])
+      scan((a, c: any) => {
+        return this.usersService.queryParamsSubject.value.page === 1
+          ? c
+          : a.concat(...c);
+      }, [])
     );
   }
 
   onScroll() {
     if (this.hasNext) {
-      this.queryParamsSubject.next({
-        ...this.queryParamsSubject.value,
-        page: ++this.queryParamsSubject.value.page,
+      this.usersService.queryParamsSubject.next({
+        ...this.usersService.queryParamsSubject.value,
+        page: ++this.usersService.queryParamsSubject.value.page,
       });
     }
   }

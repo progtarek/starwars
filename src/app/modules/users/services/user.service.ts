@@ -4,13 +4,14 @@ import { environment } from './../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, tap } from 'rxjs/operators';
-import { Observable, Subject, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   peopleUrl = `${environment.apiRoot}/people`;
+  queryParamsSubject = new BehaviorSubject<QueryParams>(new QueryParams());
 
   constructor(private http: HttpClient) {}
 
