@@ -1,13 +1,13 @@
 <div id="users_list" *ngIf="usersList$ | async as users">
   <div
-    class="timeline d-flex flex-column"
+    class="users-cont"
     infiniteScroll
     [infiniteScrollDistance]="2"
     [fromRoot]="true"
     [infiniteScrollThrottle]="50"
     (scrolled)="onScroll()"
   >
-    <div class="user-card-container" *ngFor="let user of users">
+    <div class="users-cont--card" *ngFor="let user of users">
       <app-user-card [user]="user"></app-user-card>
     </div>
   </div>

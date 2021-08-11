@@ -1,4 +1,23 @@
 <div class="card">
-  <div class="card--header">{{ user?.name }}</div>
-  <div class="card--body">this.card body</div>
+  <div class="card--header">
+    <img src="assets/images/users/avatar.png" alt="avatar" />
+  </div>
+  <div class="card--body">
+    <h4 class="card--title">{{ user?.name }}</h4>
+
+    <!-- height -->
+    <div class="info-block">
+      <div class="info-block--title">Height:</div>
+      <div class="info-block--subtitle">{{ user?.height }}</div>
+    </div>
+
+    <!-- url -->
+    <div class="info-block">
+      <div class="info-block--title">URL:</div>
+      <div class="info-block--subtitle">
+        <a target="_blank" [href]="user?.url">{{ user?.url }}</a>
+      </div>
+    </div>
+  </div>
+  <div class="card--footer">this is footer</div>
 </div>

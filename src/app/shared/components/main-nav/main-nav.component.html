@@ -8,8 +8,10 @@
     <!-- search for people -->
     <input
       #searchBox
+      class="search-box"
       id="search-box"
       type="search"
+      placeholder="SEARCH STAR WARS"
       autocomplete="false"
       (input)="onSearch(searchBox.value)"
     />
