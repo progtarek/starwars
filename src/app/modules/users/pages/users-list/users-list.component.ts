@@ -12,6 +12,7 @@ import {
   switchMap,
 } from 'rxjs/operators';
 import { User } from '../../models/User';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-users-list',
@@ -19,26 +20,30 @@ import { User } from '../../models/User';
   styleUrls: ['./users-list.component.scss'],
 })
 export class UsersListComponent implements OnInit {
-  usersList$!: Observable<User[]>;
+  users: User[] = [];
   hasNext: boolean = true;
 
   constructor(private usersService: UserService) {}
 
   ngOnInit(): void {
-    this.usersList$ = this.usersService.queryParamsSubject.pipe(
-      debounce((params) => (params.search ? timer(300) : EMPTY)),
-      distinctUntilChanged(),
-      mergeMap((params) => this.usersService.getUsersList(params)),
-      map(({ results, next, ...rest }) => {
-        this.hasNext = next ? true : false;
-        return results;
-      }),
-      scan((a, c: any) => {
-        return this.usersService.queryParamsSubject.value.page === 1
-          ? c
-          : a.concat(...c);
-      }, [])
-    );
+    this.usersService.queryParamsSubject
+      .pipe(
+        debounce((params) => (params.search ? timer(300) : EMPTY)),
+        distinctUntilChanged(),
+        mergeMap((params) => this.usersService.getUsersList(params)),
+        map(({ results, next, ...rest }) => {
+          this.hasNext = next ? true : false;
+          return results;
+        }),
+        scan((a, c: any) => {
+          return this.usersService.queryParamsSubject.value.page === 1
+            ? c
+            : a.concat(...c);
+        }, [])
+      )
+      .subscribe((users: User[]) => {
+        this.users = users;
+      });
   }
 
   onScroll() {
@@ -48,5 +53,9 @@ export class UsersListComponent implements OnInit {
         page: ++this.usersService.queryParamsSubject.value.page,
       });
     }
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.users, event.previousIndex, event.currentIndex);
   }
 }

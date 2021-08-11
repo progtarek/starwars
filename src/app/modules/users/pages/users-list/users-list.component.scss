@@ -2,5 +2,11 @@
   .users-cont {
     display: grid;
     grid-row-gap: 15px;
+    overflow: hidden;
+
+    &--card {
+      box-sizing: border-box;
+      cursor: move;
+    }
   }
 }

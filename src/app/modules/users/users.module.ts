@@ -1,6 +1,6 @@
-import { SharedModule } from '../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersListComponent } from './pages/users-list/users-list.component';
@@ -9,6 +9,11 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [UsersListComponent, UserCardComponent],
-  imports: [CommonModule, UsersRoutingModule, InfiniteScrollModule],
+  imports: [
+    CommonModule,
+    UsersRoutingModule,
+    InfiniteScrollModule,
+    DragDropModule,
+  ],
 })
 export class UsersModule {}

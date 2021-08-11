@@ -1,4 +1,4 @@
-<div id="users_list" *ngIf="usersList$ | async as users">
+<div id="users_list">
   <div
     class="users-cont"
     infiniteScroll
@@ -6,8 +6,10 @@
     [fromRoot]="true"
     [infiniteScrollThrottle]="50"
     (scrolled)="onScroll()"
+    cdkDropList
+    (cdkDropListDropped)="drop($event)"
   >
-    <div class="users-cont--card" *ngFor="let user of users">
+    <div class="users-cont--card" *ngFor="let user of users" cdkDrag>
       <app-user-card [user]="user"></app-user-card>
     </div>
   </div>
