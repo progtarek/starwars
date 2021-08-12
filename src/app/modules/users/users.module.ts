@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -14,6 +15,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     UsersRoutingModule,
     InfiniteScrollModule,
     DragDropModule,
+    SharedModule,
   ],
 })
 export class UsersModule {}

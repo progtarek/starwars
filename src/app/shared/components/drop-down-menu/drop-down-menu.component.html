@@ -1,0 +1,9 @@
+<div class="dropdown">
+  <button class="dropdown--toggle" (click)="isDropDownOpen = !isDropDownOpen">
+    <img [src]="iconPath" [alt]="title" *ngIf="iconPath" />
+    <span>{{ title }}</span>
+  </button>
+  <div class="dropdown--menu" *ngIf="isDropDownOpen">
+    <ng-content></ng-content>
+  </div>
+</div>

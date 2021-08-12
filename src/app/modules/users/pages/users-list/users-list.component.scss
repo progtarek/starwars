@@ -1,8 +1,15 @@
 #users_list {
+  display: grid;
+
+  app-drop-down-menu {
+    text-align: right;
+  }
+
   .users-cont {
     display: grid;
     grid-row-gap: 15px;
     overflow: hidden;
+    margin-top: 1rem;
 
     &--card {
       box-sizing: border-box;
