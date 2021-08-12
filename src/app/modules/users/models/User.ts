@@ -2,18 +2,18 @@ import { HomeWorld } from './HomeWorld';
 export interface User {
   name: string;
   height: string;
-  mass: string;
-  hair_color: string;
-  skin_color: string;
-  eye_color: string;
-  birth_year: string;
-  gender: string;
+  mass?: string;
+  hair_color?: string;
+  skin_color?: string;
+  eye_color?: string;
+  birth_year?: string;
+  gender?: string;
   homeworld: HomeWorld;
   films?: string[] | null;
   species?: null[] | null;
   vehicles?: string[] | null;
   starships?: string[] | null;
-  created: string;
-  edited: string;
+  created?: string;
+  edited?: string;
   url: string;
 }
