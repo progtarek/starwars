@@ -1,0 +1,55 @@
+<form class="form-filters">
+  <!-- Actions -->
+  <div class="form-actions">
+    <h4>Filter</h4>
+
+    <button type="button" class="btn">Reset Filters</button>
+  </div>
+  <!-- job -->
+  <div class="form-group form-filters--group">
+    <label class="form-label">Job: </label>
+    <select class="form-select" aria-label="Default select example">
+      <option selected hidden>View All</option>
+      <option
+        *ngFor="let job of ['Teacher', 'Engineer', 'Doctor']"
+        [value]="job"
+      >
+        {{ job }}
+      </option>
+    </select>
+  </div>
+  <!-- Type -->
+  <div class="form-group form-filters--group">
+    <label class="form-label">Type: </label>
+    <select class="form-select" aria-label="Default select example">
+      <option selected hidden>Choose</option>
+      <option *ngFor="let type of ['type1', 'type2', 'type3']" [value]="type">
+        {{ type }}
+      </option>
+    </select>
+  </div>
+  <!-- Status -->
+  <div class="form-group form-filters--group">
+    <label class="form-label">Status: </label>
+    <select class="form-select" aria-label="Default select example">
+      <option selected hidden>Choose</option>
+      <option
+        *ngFor="let status of ['active', 'blocked', 'pending']"
+        [value]="status"
+      >
+        {{ status }}
+      </option>
+    </select>
+  </div>
+  <!-- vat -->
+  <div class="form-group form-filters--group">
+    <label class="form-label">VAT: </label>
+    <div class="form-check">
+      <label class="custom-checkbox">
+        <input type="checkbox" />
+        <span class="checkmark"></span>
+        <span class="title">EU VAT </span>
+      </label>
+    </div>
+  </div>
+</form>

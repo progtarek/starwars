@@ -2,14 +2,13 @@ import { QueryParams } from './../../../../shared/models/QueryParams';
 import { UsersList } from './../../models/UsersList';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, EMPTY, Observable, timer } from 'rxjs';
+import { EMPTY, timer } from 'rxjs';
 import {
   debounce,
   distinctUntilChanged,
   map,
   mergeMap,
   scan,
-  switchMap,
 } from 'rxjs/operators';
 import { User } from '../../models/User';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';

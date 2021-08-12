@@ -1,0 +1,31 @@
+@import "../../../../../assets/scss/general";
+@import "../../../../../assets/scss/variables";
+
+.form-filters {
+  &--group {
+    background-color: $color-border-grey-1;
+    border: 1px solid $color-border-grey-1;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+
+    &:last-child {
+      background: transparent;
+      border: none;
+    }
+  }
+
+  .form-check {
+    border: 1px solid $color-border-grey-1;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+  }
+
+  .form-actions {
+    @extend .d-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.6rem;
+    margin-bottom: 0.6rem;
+    border-bottom: 1px solid $color-border-grey-2;
+  }
+}
